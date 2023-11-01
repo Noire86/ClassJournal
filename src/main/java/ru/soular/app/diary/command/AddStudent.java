@@ -21,6 +21,7 @@ public class AddStudent implements Command {
     public void execute() {
         if (appStorage.studentExists(newStudent)) {
             ConsoleWriter.writeError("Student " + newStudent + " already exists!");
+            return;
         }
 
         appStorage.addStudent(newStudent);

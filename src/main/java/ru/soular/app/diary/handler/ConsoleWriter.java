@@ -3,6 +3,7 @@ package ru.soular.app.diary.handler;
 import org.jline.utils.AttributedStringBuilder;
 import org.jline.utils.AttributedStyle;
 import ru.soular.app.diary.Application;
+import ru.soular.app.diary.entity.Student;
 
 import java.io.PrintWriter;
 
@@ -14,7 +15,7 @@ public class ConsoleWriter {
     }
 
     public static void writeHelp(String msg) {
-        writeColoredMessage(msg, AttributedStyle.WHITE);
+        writeColoredMessage(msg, AttributedStyle.BRIGHT);
     }
 
     public static void writeSuccess(String msg) {

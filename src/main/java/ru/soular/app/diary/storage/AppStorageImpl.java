@@ -3,10 +3,7 @@ package ru.soular.app.diary.storage;
 import ru.soular.app.diary.entity.Score;
 import ru.soular.app.diary.entity.Student;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public enum AppStorageImpl implements AppStorage {
     INSTANCE;
@@ -15,10 +12,10 @@ public enum AppStorageImpl implements AppStorage {
         this.database = new HashMap<>();
     }
 
-    private final Map<Student, List<Score>> database;
+    private final Map<Student, Set<Score>> database;
 
     @Override
-    public List<Score> getScores(Student student) {
+    public Set<Score> getScores(Student student) {
         return database.get(student);
     }
 
@@ -26,7 +23,7 @@ public enum AppStorageImpl implements AppStorage {
     public List<Student> getAllStudents() {
         return database.keySet()
                 .stream()
-                .sorted()
+                .sorted(Comparator.comparing(Student::getLastName))
                 .toList();
     }
 
@@ -37,7 +34,7 @@ public enum AppStorageImpl implements AppStorage {
 
     @Override
     public void addStudent(Student student) {
-        database.put(student, new ArrayList<>());
+        database.put(student, new HashSet<>());
     }
 
     @Override

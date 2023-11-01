@@ -41,4 +41,15 @@ public enum AppStorageImpl implements AppStorage {
     public void removeStudent(Student student) {
         database.remove(student);
     }
+
+    @Override
+    public Map<Student, Set<Score>> getData() {
+        return database;
+    }
+
+    @Override
+    public void setData(Map<Student, Set<Score>> map) {
+        database.clear();
+        database.putAll(map);
+    }
 }

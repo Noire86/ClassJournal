@@ -19,6 +19,8 @@ public class Help implements Command {
                 - showScore {firstName} {lastName} | Show scores for a specific student
                 - help | Print help menu
                 - motd | Print welcoming message
+                - export | Export data to file
+                - import {path} Import data to file
                 - exit | Exit application""");
         ConsoleWriter.writeHelp(DELIMITER);
     }

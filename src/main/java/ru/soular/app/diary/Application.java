@@ -6,15 +6,11 @@ import org.jline.reader.LineReaderBuilder;
 import org.jline.reader.impl.DefaultParser;
 import org.jline.terminal.Terminal;
 import org.jline.terminal.TerminalBuilder;
-import ru.soular.app.diary.entity.Score;
-import ru.soular.app.diary.entity.Student;
 import ru.soular.app.diary.handler.CommandHandler;
 import ru.soular.app.diary.storage.AppStorage;
 import ru.soular.app.diary.storage.AppStorageImpl;
 
 import java.io.IOException;
-import java.util.List;
-import java.util.Map;
 
 @Getter
 public enum Application {

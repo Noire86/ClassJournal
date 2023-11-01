@@ -1,9 +1,6 @@
 package ru.soular.app.diary;
 
-import lombok.extern.slf4j.Slf4j;
-import ru.soular.app.diary.command.Help;
 import ru.soular.app.diary.command.Motd;
-import ru.soular.app.diary.handler.ConsoleWriter;
 
 public class Main {
 

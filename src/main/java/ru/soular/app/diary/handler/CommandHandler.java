@@ -61,6 +61,24 @@ public class CommandHandler {
                 }
             }
 
+            case "export" -> {
+                if (args.length != 2) {
+                    printInvalidArgs();
+                    return;
+                }
+
+                new Export(args[1]).execute();
+            }
+
+            case "import" -> {
+                if (args.length != 2) {
+                    printInvalidArgs();
+                    return;
+                }
+
+                new Import(args[1]).execute();
+            }
+
             case "showallscores" -> new ShowAllScores().execute();
             case "help" -> new Help().execute();
             case "exit" -> new Exit().execute();

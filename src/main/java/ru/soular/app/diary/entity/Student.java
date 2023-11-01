@@ -1,5 +1,6 @@
 package ru.soular.app.diary.entity;
 
+import com.fasterxml.jackson.annotation.JsonKey;
 import lombok.Builder;
 import lombok.Data;
 

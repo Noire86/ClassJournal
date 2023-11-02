@@ -1,2 +1,3 @@
 # ClassJournal
-A simple and fast-coded class journal app, made for Digital Habits homework task.
+A simple and fast-coded class journal app, based on jline shell.
+Made for Digital Habits homework task.

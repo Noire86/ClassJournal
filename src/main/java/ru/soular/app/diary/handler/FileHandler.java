@@ -5,9 +5,9 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 public class FileHandler {
-    public static void saveFile(String path, String data) {
+    public static void saveFile(String path, byte[] data) {
         try {
-            Files.write(Paths.get(path), data.getBytes());
+            Files.write(Paths.get(path), data);
             ConsoleWriter.writeSuccess("Data has been successfully exported!");
         } catch (IOException e) {
             ConsoleWriter.writeError("Failed to save data to file! Error: " + e.getMessage());
@@ -24,6 +24,6 @@ public class FileHandler {
             ConsoleWriter.writeError("Failed to read data from file! Maybe file path is incorrect?");
         }
 
-        return null;
+        throw new RuntimeException();
     }
 }

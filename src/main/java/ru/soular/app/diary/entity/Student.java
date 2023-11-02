@@ -1,14 +1,18 @@
 package ru.soular.app.diary.entity;
 
 import com.fasterxml.jackson.annotation.JsonKey;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-@Data
+@Getter
 @Builder
-public class Student {
+@AllArgsConstructor
+public class Student implements Serializable {
     private String firstName;
     private String lastName;
 

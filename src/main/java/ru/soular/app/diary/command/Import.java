@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
+import org.apache.commons.lang3.SerializationUtils;
 import ru.soular.app.diary.Application;
 import ru.soular.app.diary.entity.Score;
 import ru.soular.app.diary.entity.Student;
@@ -23,13 +24,10 @@ public class Import implements Command {
     @Override
     public void execute() {
         AppStorage appStorage = Application.INSTANCE.getAppStorage();
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.findAndRegisterModules();
 
         try {
-            appStorage.setData(mapper.readValue(FileHandler.readFile(path), new TypeReference<Map<Student, Set<Score>>>() {
-            }));
-        } catch (IOException e) {
+            appStorage.setData(SerializationUtils.deserialize(FileHandler.readFile(path)));
+        } catch (Exception e) {
             ConsoleWriter.writeError("Error on mapping database from file: " + e.getMessage());
         }
     }

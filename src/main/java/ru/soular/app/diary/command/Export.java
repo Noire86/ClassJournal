@@ -7,6 +7,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import lombok.RequiredArgsConstructor;
+import org.apache.commons.lang3.SerializationUtils;
 import ru.soular.app.diary.Application;
 import ru.soular.app.diary.entity.Score;
 import ru.soular.app.diary.entity.Student;
@@ -14,7 +15,9 @@ import ru.soular.app.diary.handler.ConsoleWriter;
 import ru.soular.app.diary.handler.FileHandler;
 import ru.soular.app.diary.storage.AppStorage;
 
+import java.io.Serializable;
 import java.lang.reflect.Type;
+import java.time.LocalDate;
 import java.util.Map;
 import java.util.Set;
 
@@ -25,11 +28,12 @@ public class Export implements Command {
 
     @Override
     public void execute() {
-        AppStorage appStorage = Application.INSTANCE.getAppStorage();
-        Gson gson = new GsonBuilder().setPrettyPrinting().excludeFieldsWithoutExposeAnnotation().create();
+        try {
+            AppStorage appStorage = Application.INSTANCE.getAppStorage();
+            FileHandler.saveFile(path, SerializationUtils.serialize((Serializable) appStorage.getData()));
+        } catch (Exception e) {
+            ConsoleWriter.writeError("Error on mapping database to file: " + e.getMessage());
+        }
 
-        Type type = new TypeToken<Map<Student, Set<Score>>>(){}.getType();
-
-        FileHandler.saveFile(path, gson.toJson(appStorage.getData(), type));
     }
 }

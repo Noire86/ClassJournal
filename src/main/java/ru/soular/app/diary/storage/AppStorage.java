@@ -3,11 +3,10 @@ package ru.soular.app.diary.storage;
 import ru.soular.app.diary.entity.Score;
 import ru.soular.app.diary.entity.Student;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.io.Serializable;
+import java.util.*;
 
-public interface AppStorage {
+public interface AppStorage extends Serializable {
     Set<Score> getScores(Student student);
     List<Student> getAllStudents();
     Boolean studentExists(Student student);
